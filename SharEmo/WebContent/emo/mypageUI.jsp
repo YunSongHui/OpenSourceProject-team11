@@ -181,7 +181,13 @@
     <section id="container_mypage">
         <section id="content_mypage">
             <div>
+<<<<<<< HEAD
                 <h1 style="text-align: center; font-size: 30px">${user.id}'s PAGE</h1>
+=======
+                <h1 style="text-align: center">(JANGTIST)'s MY PAGE</h1>
+                <img src="에펠탑뺴꼼3.jpg" width="100" height="100" />
+                <h1 style="text-align: center">${user.id}'s MY PAGE</h1>
+>>>>>>> branch 'master' of https://github.com/YunSongHui/OpenSourceProject-team11.git
                 <img src="${user.mascot}", width="300" , height="300" />
 
                 <p>Nickname : ${user.nickname}</p>
