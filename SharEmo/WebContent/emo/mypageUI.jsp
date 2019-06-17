@@ -81,27 +81,26 @@
 <body>
 
     <section id="header">
-        <div id="navbar-top">
-                           
-            <a href="main.do"> <img src="emo/images/sharEmo_logo_2.png">
-            </a>
-            <ul id="navbar-top-right">
-                <c:choose>
-                    <c:when test="${user != null}">
-                        <li class="nav-top-item">
-                            <img src="${user.mascot}">
-                          <a href='mypage.do'>${user.id}님</a>
-                        </li>
-                        <li class="nav-top-item"><a href='logout.do'>Logout</a></li>
-                    </c:when>
-                    <c:otherwise>
-                        <li class="nav-top-item"><a href='loginUI.do'>Login</a></li>
-                    </c:otherwise>
-                </c:choose>
-                <li class="nav-top-item"><a href="signUpUI.do">Sign up</a></li>
-            </ul>
-        </div>
-    </section>
+		<div id="navbar-top">
+			<a href="main.do"> <img src="emo/images/sharEmo_logo_2.png">
+			</a>
+			<ul id="navbar-top-right">
+				<c:choose>
+					<c:when test="${user != null}">
+						<li class="nav-top-item">
+							<img src="${user.mascot}">
+							<a href='mypage.do'>${user.id}님</a>
+						</li>
+						<li class="nav-top-item"><a href='logout.do'>Logout</a></li>
+					</c:when>
+					<c:otherwise>
+						<li class="nav-top-item"><a href='loginUI.do'>Login</a></li>
+					</c:otherwise>
+				</c:choose>
+				<li class="nav-top-item"><a href="signUpUI.do">Sign up</a></li>
+			</ul>
+		</div>
+	</section>
 
     <nav id="navbar-mid">
         <form action="search.do" method="post">
@@ -182,7 +181,7 @@
     <section id="container_mypage">
         <section id="content_mypage">
             <div>
-                <h1 style="text-align: center">${user.id}'s MY PAGE</h1>
+                <h1 style="text-align: center; font-size: 30px">${user.id}'s PAGE</h1>
                 <img src="${user.mascot}", width="300" , height="300" />
 
                 <p>Nickname : ${user.nickname}</p>
@@ -194,7 +193,7 @@
                 <table>
                     <tr>
                         <td style="width: 1100px">
-                            <p style="text-align: left; padding-left:20px">upload</p>
+                            <p style="text-align: left; padding-left:20px">upload emoticon</p>
                         </td>
                         <td>
                             <div class="wrap"><button class="button">Browse</button></div>
@@ -234,7 +233,7 @@
                 <table>
                         <tr>
                             <td style="width: 1100px">
-                            <p style="text-align: left; padding-left:20px">upload</p>
+                            <p style="text-align: left; padding-left:20px">like emoticon</p>
                         </td>
                         <td>
                             <div class="wrap"><button class="button">Browse</button></div>
@@ -248,7 +247,7 @@
                 <table>
                         <tr>
                              <td style="width: 1100px">
-                            <p style="text-align: left; padding-left:20px">upload</p>
+                            <p style="text-align: left; padding-left:20px">follow emoticon</p>
                         </td>
                         <td>
                             <div class="wrap"><button class="button">Browse</button></div>

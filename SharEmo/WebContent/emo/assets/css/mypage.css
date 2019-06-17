@@ -14,7 +14,7 @@ body {
     width: 100%;
 }
 #navbar-top>a {
-    margin: 10 auto 10 10;
+    margin: 10px auto 10px 10px;
 }
 #navbar-top-right {
 	float :left;
@@ -31,7 +31,7 @@ body {
     display: inline-block;
     background-color: rgba( 0, 0, 0, 0.09);
     border-radius: 5px;
-    padding: 7 11 7 11;
+    padding: 7px 11px 7px 11px;
     margin-right: 20px;
 }
 .nav-top-item a{
