@@ -54,29 +54,31 @@ public class BoardWriteCommand implements BoardCommand {
 		String path = request.getRealPath("emosave");
 		int maxFileSize = 1024 * 1024 * 10;
 		String enc = "utf-8";
-		MultipartRequest multi = new MultipartRequest(request, path, maxFileSize, enc, new DefaultFileRenamePolicy());
-
 		int num;
 		BoardDAO bdao = new BoardDAO();
 		EmoticonDAO emodao = new EmoticonDAO();
-		UserTO user = (UserTO) session.getAttribute("user");
-		String id = user.getId();
-		String author = user.getNickname();
-		String title = multi.getParameter("title");
-		String content =multi.getParameter("content");
+		num=bdao.getMaxNum()+1;
+		//path+="\\"+num;
 		
-		bdao.write(id, title, author, content);
-		Enumeration files = multi.getFileNames();
-		while (files.hasMoreElements()) {
-			String uploadFile = (String) files.nextElement();
-			String orgName = multi.getOriginalFileName(uploadFile);
-			String sysName = multi.getFilesystemName(uploadFile);
-
-			System.out.println(sysName);
-			num=emodao.writeEmoticon(sysName, orgName, null);
-			moveFile( Integer.toString(num), sysName, path, path);
+		MultipartRequest multi = new MultipartRequest(request, path, maxFileSize, enc, new DefaultFileRenamePolicy());
+		
+		UserTO user = (UserTO) session.getAttribute("user");
+		if(user!=null) {
+			String id = user.getId();
+			String author = user.getNickname();
+			String title = multi.getParameter("title");
+			String content =multi.getParameter("content");
+			
+			bdao.write(id, title, author, content);
+			Enumeration files = multi.getFileNames();
+			while (files.hasMoreElements()) {
+				String uploadFile = (String) files.nextElement();
+				String orgName = multi.getOriginalFileName(uploadFile);
+				String sysName = multi.getFilesystemName(uploadFile);
+				num=emodao.writeEmoticon(sysName, orgName, null);
+				moveFile(Integer.toString(num), sysName, path, path);
+			}
 		}
-		response.sendRedirect("listPage.do?method=1");
 		return null;
 	}
 }

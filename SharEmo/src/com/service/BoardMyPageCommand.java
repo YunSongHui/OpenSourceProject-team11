@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.dao.BoardDAO;
+import com.dao.EmoticonDAO;
 import com.dao.UserDAO;
 import com.entity.EmoticonTO;
 import com.entity.PageTO;
@@ -26,13 +27,14 @@ public class BoardMyPageCommand implements BoardCommand {
 		}
 		
 		BoardDAO board_dao = new BoardDAO();
+		EmoticonDAO emo_dao = new EmoticonDAO();
 		UserDAO user_dao = new UserDAO();
 		PageTO listA = board_dao.pageWhose(1, target_user.getNickname());
 		PageTO listB = board_dao.pageLike(1, target_user.getId());
 		PageTO listC = user_dao.pageFollow(1, target_user.getId());
 
 		//이모티콘 이미지 저장
-		ArrayList<EmoticonTO> ticon = board_dao.getEmoticon();
+		ArrayList<EmoticonTO> ticon = emo_dao.getEmoticon();
 		request.setAttribute("ticon", ticon);
 		//user 정보 저장
 		request.setAttribute("target_user", target_user);

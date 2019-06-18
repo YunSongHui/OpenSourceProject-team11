@@ -42,11 +42,8 @@ public class BoardUpdateCommand implements BoardCommand {
 		// 실행시 사용자가 입력한 정보를 받아와서 DAO를 통해 DB에 새로운 row를 삽입합니다.
 
 		HttpSession session = request.getSession();
-		
 
-	
 		response.sendRedirect("listPage.do?method=1");
-
 		return null;
 	}
 }

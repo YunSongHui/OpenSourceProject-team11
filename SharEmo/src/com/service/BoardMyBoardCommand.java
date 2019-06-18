@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.dao.BoardDAO;
+import com.dao.EmoticonDAO;
 import com.entity.EmoticonTO;
 import com.entity.PageTO;
 import com.entity.UserTO;
@@ -26,11 +27,11 @@ public class BoardMyBoardCommand implements BoardCommand {
 		String nextPage = null;
 		if(method == 1) { 
 			nextPage = "emo/listPage.jsp";
-			
 			BoardDAO board_dao = new BoardDAO();
+			EmoticonDAO emodao = new EmoticonDAO();
 			PageTO list = board_dao.pageWhose(curPage, target_user.getNickname());
 			//이모티콘 이미지 저장
-			ArrayList<EmoticonTO> ticon = board_dao.getEmoticon();
+			ArrayList<EmoticonTO> ticon = emodao.getEmoticon();
 			request.setAttribute("ticon", ticon);
 			//listPage.jsp에서 목록 리스트 데이터 저장
 			request.setAttribute("list", list.getBoardList());
@@ -40,11 +41,11 @@ public class BoardMyBoardCommand implements BoardCommand {
 		}
 		else if(method == 2) {
 			nextPage = "emo/listPage.jsp";
-			
 			BoardDAO board_dao = new BoardDAO();
+			EmoticonDAO emodao = new EmoticonDAO();
 			PageTO list = board_dao.pageWhose(curPage, target_user.getNickname());
 			//이모티콘 이미지 저장
-			ArrayList<EmoticonTO> ticon = board_dao.getEmoticon();
+			ArrayList<EmoticonTO> ticon = emodao.getEmoticon();
 			request.setAttribute("ticon", ticon);
 			//listPage.jsp에서 목록 리스트 데이터 저장
 			request.setAttribute("list", list.getBoardList());

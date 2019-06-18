@@ -567,83 +567,6 @@ public class BoardDAO {
 		return to;
 	}
 
-	public ArrayList<EmoticonTO> getEmoticon() {
-		ArrayList<EmoticonTO> ticon = new ArrayList<EmoticonTO>();
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
-		try {
-			con = ds.getConnection();
-			String query = "SELECT boardnum, sysname FROM emoticon;";
-			pstmt = con.prepareStatement(query);
-			rs = pstmt.executeQuery();
-
-			while (rs.next()) {
-				int num = rs.getInt("boardnum");
-				String sysname = rs.getString("sysname");
-				EmoticonTO data = new EmoticonTO();
-				data.setBoardnum(num);
-				data.setSrc(sysname);
-				ticon.add(data);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (rs != null)
-					rs.close();
-				if (pstmt != null)
-					pstmt.close();
-				if (con != null)
-					con.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return ticon;
-	}
-
-	// 해당 게시물의 이모티콘만 추출
-	public ArrayList<EmoticonTO> getEmoticon(String _num) {
-		ArrayList<EmoticonTO> ticon = new ArrayList<EmoticonTO>();
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
-		try {
-			con = ds.getConnection();
-			String query = "SELECT * FROM emoticon where boardnum=" + _num;
-			pstmt = con.prepareStatement(query);
-			rs = pstmt.executeQuery();
-
-			while (rs.next()) {
-				int num = rs.getInt("boardnum");
-				String sysname = rs.getString("sysname");
-				String orgname = rs.getString("orgname");
-				EmoticonTO data = new EmoticonTO();
-				data.setBoardnum(num);
-				data.setSrc(sysname);
-				data.setOrg(orgname);
-				ticon.add(data);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (rs != null)
-					rs.close();
-				if (pstmt != null)
-					pstmt.close();
-				if (con != null)
-					con.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return ticon;
-	}
-	
 	// 페이지 구현
 	public PageTO pageWhose(int _curPage, String _author) {
 		PageTO to = new PageTO();
@@ -777,6 +700,39 @@ public class BoardDAO {
 		
 		return to;
 		
+	}
+
+	public int getMaxNum() {
+	
+		int num = 0;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+	
+		try {
+			con = ds.getConnection();
+			String query = "select ifnull(max(num), 0) from board";
+			pstmt = con.prepareStatement(query);
+			rs = pstmt.executeQuery();
+	
+			if (rs.next()) {
+				num = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return num;
 	}
 
 }
