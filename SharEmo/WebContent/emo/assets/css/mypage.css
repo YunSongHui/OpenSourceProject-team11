@@ -181,15 +181,26 @@ body {
 	color: #fff;
 	transform: translateY(-7px);
 }
+.emoticon-package {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.emoticon-item:nth-child(2), .emoticon-item:nth-child(3) {
+	margin: 0 20px;
+}
 .Thumbnail{
     width: 150px;
     height: 150px;
+}
+.emoticon-item p {
+	margin: 5px;
 }
 .info {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	margin: 5px 0 5px 0;
+	margin: 5px;
 }
 .info img {
 	width: 25px;

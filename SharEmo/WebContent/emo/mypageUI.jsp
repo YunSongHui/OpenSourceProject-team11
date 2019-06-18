@@ -154,25 +154,27 @@
 					</div>
 					<div class="emoticon-package">
 						<c:forEach var="dto" items="${listA}" begin="0" end="3">
-							<a href="retrieve.do?num=${dto.num}"> 
-								<c:set var="loop_flag" value="false" />
-								<c:forEach var="emo" items="${ticon}">
-									<c:if test="${not loop_flag}">
-										<c:if test="${dto.num eq emo.boardnum}">
-											<img class="Thumbnail" src="emosave/${emo.boardnum}/${emo.src}">
-											<c:set var="loop_flag" value="true" />
+							<div class="emoticon-item">
+								<a href="retrieve.do?num=${dto.num}"> 
+									<c:set var="loop_flag" value="false" />
+									<c:forEach var="emo" items="${ticon}">
+										<c:if test="${not loop_flag}">
+											<c:if test="${dto.num eq emo.boardnum}">
+												<img class="Thumbnail" src="emosave/${emo.boardnum}/${emo.src}">
+												<c:set var="loop_flag" value="true" />
+											</c:if>
 										</c:if>
-									</c:if>
-								</c:forEach>
-							</a>
-							<p>
-								<a href="retrieve.do?num=${dto.num}">${dto.title}</a>
-							</p>
-							<div class="info">
-								<img class="info_item" src="emo/images/likes.png">
-								<p class="info_item">${dto.likes}</p>
-								<img class="info_item" src="emo/images/view.png">
-								<p class="info_item">${dto.readcnt}</p>
+									</c:forEach>
+								</a>
+								<p>
+									<a href="retrieve.do?num=${dto.num}">${dto.title}</a>
+								</p>
+								<div class="info">
+									<img class="info_item" src="emo/images/likes.png">
+									<p class="info_item">${dto.likes}</p>
+									<img class="info_item" src="emo/images/view.png">
+									<p class="info_item">${dto.readcnt}</p>
+								</div>
 							</div>
 						</c:forEach>
 					</div>
@@ -187,25 +189,27 @@
 					</div>
 					<div class="emoticon-package">
 						<c:forEach var="dto" items="${listB}" begin="0" end="3">
-							<a href="retrieve.do?num=${dto.num}"> 
-								<c:set var="loop_flag" value="false" />
-								<c:forEach var="emo" items="${ticon}">
-									<c:if test="${not loop_flag}">
-										<c:if test="${dto.num eq emo.boardnum}">
-											<img class="Thumbnail" src="emosave/${emo.boardnum}/${emo.src}">
-											<c:set var="loop_flag" value="true" />
+							<div class="emoticon-item">
+								<a href="retrieve.do?num=${dto.num}"> 
+									<c:set var="loop_flag" value="false" />
+									<c:forEach var="emo" items="${ticon}">
+										<c:if test="${not loop_flag}">
+											<c:if test="${dto.num eq emo.boardnum}">
+												<img class="Thumbnail" src="emosave/${emo.boardnum}/${emo.src}">
+												<c:set var="loop_flag" value="true" />
+											</c:if>
 										</c:if>
-									</c:if>
-								</c:forEach>
-							</a>
-							<p>
-								<a href="retrieve.do?num=${dto.num}">${dto.title}</a>
-							</p>
-							<div class="info">
-								<img class="info_item" src="emo/images/likes.png">
-								<p class="info_item">${dto.likes}</p>
-								<img class="info_item" src="emo/images/view.png">
-								<p class="info_item">${dto.readcnt}</p>
+									</c:forEach>
+								</a>
+								<p>
+									<a href="retrieve.do?num=${dto.num}">${dto.title}</a>
+								</p>
+								<div class="info">
+									<img class="info_item" src="emo/images/likes.png">
+									<p class="info_item">${dto.likes}</p>
+									<img class="info_item" src="emo/images/view.png">
+									<p class="info_item">${dto.readcnt}</p>
+								</div>
 							</div>
 						</c:forEach>
 					</div>
@@ -220,15 +224,16 @@
 					</div>
 					<div class="emoticon-package">
 						<c:forEach var="dto" items="${listC}" begin="0" end="3">
-							<a href="mypage.do?id=${dto.id}">
-								<img class="Thumbnail" src="${dto.mascot}">
-							</a>
-							<p><a href="mypage.do?id=${dto.id}">${dto.nickname}</a></p>
-							<div class="info">
-								<img class="info_item" src="emo/images/follow.png">
-								<p class="info_item">${dto.followernum}</p>
+							<div class="emoticon-item">
+								<a href="mypage.do?id=${dto.id}">
+									<img class="Thumbnail" src="${dto.mascot}">
+								</a>
+								<p><a href="mypage.do?id=${dto.id}">${dto.nickname}</a></p>
+								<div class="info">
+									<img class="info_item" src="emo/images/follow.png">
+									<p class="info_item">${dto.followernum}</p>
+								</div>
 							</div>
-							<p>
 						</c:forEach>
 					</div>
 				</div>
