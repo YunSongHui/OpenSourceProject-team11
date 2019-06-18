@@ -9,15 +9,14 @@
 	int method = (int)request.getAttribute("method");
 	int totalCount;
 	String pageTag;
+	totalCount = to.getTotalCount();
 	if(to.getBoardList() != null) {
-		totalCount = to.getBoardList().size();
 		pageTag = "listPage";
 	}
 	else {
-		totalCount = to.getUserList().size();
 		pageTag = "artistListPage";
 	}
-	
+
 	int totalPage = totalCount / perPage; //보여줄 페이지 번호 개수
 	
 	if( totalCount % perPage !=0 )

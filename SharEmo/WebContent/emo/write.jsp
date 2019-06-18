@@ -102,7 +102,7 @@
 		<section id="content">
 			<div id="content-wrapper">
 				<h2>Share your new COOL emoticon!</h2>
-				<form id="frm" name=form1 action='update.do' method=post enctype="multipart/form-data">
+				<form id="frm" name=form1 action="update.do" method=post enctype="multipart/form-data">
 					<div id="title">
 						<label for="title">Title : </label> <input type="text"
 							name="title" required>

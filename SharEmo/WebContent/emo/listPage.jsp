@@ -147,7 +147,7 @@
 						<!-- page -->
 						<jsp:include page="page.jsp" flush="true" />
 					</p>
-					<c:if test="${page.curPage < list.size() / page.perPage}">
+					<c:if test="${page.curPage < page.totalCount / page.perPage}">
 					<a href="listPage.do?method=${method}&curPage=${page.curPage + 1 }"><img src="emo/images/page_right.png"></a>
 					</c:if>
 				</div>

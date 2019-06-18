@@ -53,15 +53,13 @@ public class BoardWriteCommand implements BoardCommand {
 		request.setCharacterEncoding("UTF-8");
 		String path = request.getRealPath("emosave");
 		int maxFileSize = 1024 * 1024 * 10;
-		String enc = "utf-8";
+		String enc = "utf-8";		
+		String dirpath = path ;
+		MultipartRequest multi = new MultipartRequest(request, path, maxFileSize, enc, new DefaultFileRenamePolicy());
+		
 		int num;
 		BoardDAO bdao = new BoardDAO();
 		EmoticonDAO emodao = new EmoticonDAO();
-		num=bdao.getMaxNum()+1;
-		//path+="\\"+num;
-		
-		MultipartRequest multi = new MultipartRequest(request, path, maxFileSize, enc, new DefaultFileRenamePolicy());
-		
 		UserTO user = (UserTO) session.getAttribute("user");
 		if(user!=null) {
 			String id = user.getId();
@@ -79,6 +77,7 @@ public class BoardWriteCommand implements BoardCommand {
 				moveFile(Integer.toString(num), sysName, path, path);
 			}
 		}
+		
 		return null;
 	}
 }
