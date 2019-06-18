@@ -36,8 +36,14 @@ function img_resize() {
 		eval('img[' + i + '].width = maxsize');
  			}
  		} 
-	} 
-	window.onload = img_resize; 
+} 
+window.onload = img_resize; 
+
+function delete_board(){
+	if(confirm("정말로 삭제하시겠습니까?")){
+		location.href='delete.do?num=${retrieve.num}';
+	}
+}
 </script>
 
 <script>
@@ -233,7 +239,7 @@ $(document).ready(function changeColor(){
 						<p>
 							<b>DESCRIPTION</b>
 						</p>
-						<textarea rows="6" cols="50">${retrieve.content}</textarea>
+						<textarea rows="6" cols="50" disabled>${retrieve.content}</textarea>
 					</fieldset>
 				</div>
 				<!-- 
@@ -273,7 +279,7 @@ $(document).ready(function changeColor(){
 								<img src="emo/images/edit.png">
 							</button>
 							<button type="button" id="delete_btn"
-								onclick="location.href='delete.do?num=${retrieve.num}'">
+								onclick="delete_board()">
 								<img src="emo/images/delete.png">
 							</button>
 						</c:if>
